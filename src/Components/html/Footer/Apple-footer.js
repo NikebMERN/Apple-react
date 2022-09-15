@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import $ from 'jquery';
 
 // Importing css basic
 import "../../css/bootstrap.css";
@@ -12,6 +13,25 @@ import "../../css/Footer/Apple-footer.css";
 import country from "../../images/icons/16.png";
 
 const Apple_footer = () => {
+	if ($(window).width() <= 768) {
+		$(".footer-links-wrapper").addClass("someClass");
+	} else {
+		$(".footer-links-wrapper").removeClass("someClass");
+	}
+	$(window).on("resize", function () {
+		if ($(window).width() <= 768) {
+			$(".footer-links-wrapper").addClass("someClass");
+		} else {
+			$(".footer-links-wrapper").removeClass("someClass");
+			$(".footer-links-wrapper ul").show();
+		}
+	});
+	// Footer collapse functionality
+	$(".footer-links-wrapper").on("click", ".someClass h3", function () {
+		$(this).next("ul").slideToggle();
+		$(this).toggleClass("expanded");
+	});
+
   return (
     <footer className="footer-wrapper">
       <div className="container">

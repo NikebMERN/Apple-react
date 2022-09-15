@@ -4,10 +4,11 @@ import { useParams } from "react-router-dom";
 function Iphone() {
     const [products, setProducts] = useState([]);
     const { pid } = useParams();
+    const urlin = ['/iphonse.json', ''];
     console.log(pid);
 
     useEffect(() => {
-        fetch("http://localhost:8181/iphones")
+        fetch(urlin[0])
             .then((res) => res.json())
             .then((products) => {
                 const prolist = products.products;
@@ -17,7 +18,7 @@ function Iphone() {
             .catch((err)=> console.log(`Error located: ${err}`))
     }, [pid]);
 
-    // console.log(products);
+    console.log(products);
     let order = 1;
     return (
         <div>

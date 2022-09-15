@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 
 function Iphone() {
     const [products, setProducts] = useState([]);
+    const urlin = ['/iphonse.json', ''];
 
     useEffect(() => {
-        fetch("http://localhost:8181/iphones")
+        fetch(urlin[0])
             .then((res) => res.json())
             .then((products) => {
                 setProducts(() => products.products);
